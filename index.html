@@ -32,14 +32,14 @@
             left: 0;
         }
 
-        h1 {
+        /* Estilo do Texto */
+        .name-wrapper {
             font-size: clamp(3rem, 10vw, 6rem);
             font-weight: 900;
             line-height: 0.9;
             letter-spacing: -4px;
             text-transform: uppercase;
             display: inline-block;
-
             background: linear-gradient(
                 180deg, 
                 #000000 0%, 
@@ -51,8 +51,16 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            
-            border-right: 8px solid #333;
+        }
+
+        /* O Cursor agora é um elemento separado e flutuante */
+        #custom-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 0.8em;
+            background-color: #333;
+            vertical-align: middle;
+            margin-left: 5px;
         }
 
         .cursor-blink {
@@ -100,54 +108,43 @@
         }
 
         @keyframes blink {
-            50% { border-color: transparent; }
+            50% { opacity: 0; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1 id="typing-text"></h1>
+        <h1 class="name-wrapper">
+            <span id="typing-text"></span><span id="custom-cursor"></span>
+        </h1>
     </div>
 
     <div id="languages" class="languages-section">
         <div class="languages-grid">
-            <div class="lang-item">
-                <img src="Kotlin-logo.png" alt="Kotlin">
-                <span>Kotlin</span>
-            </div>
-            <div class="lang-item">
-                <img src="css3-logo.png" alt="CSS3">
-                <span>CSS3</span>
-            </div>
-            <div class="lang-item">
-                <img src="html-logo.png" alt="HTML5">
-                <span>HTML5</span>
-            </div>
-            <div class="lang-item">
-                <img src="javascript-logo.png" alt="JavaScript">
-                <span>JavaScript</span>
-            </div>
-            <div class="lang-item">
-                <img src="python-logo.png" alt="Python">
-                <span>Python</span>
-            </div>
+            <div class="lang-item"><img src="Kotlin-logo.png" alt="Kotlin"><span>Kotlin</span></div>
+            <div class="lang-item"><img src="css3-logo.png" alt="CSS3"><span>CSS3</span></div>
+            <div class="lang-item"><img src="html-logo.png" alt="HTML5"><span>HTML5</span></div>
+            <div class="lang-item"><img src="javascript-logo.png" alt="JavaScript"><span>JavaScript</span></div>
+            <div class="lang-item"><img src="python-logo.png" alt="Python"><span>Python</span></div>
         </div>
     </div>
 
     <script>
         const nameArray = ["G", "A", "B", "R", "I", "E", "L", "<br>", "M", "O", "U", "R", "A"];
-        const element = document.getElementById("typing-text");
+        const textElement = document.getElementById("typing-text");
+        const cursor = document.getElementById("custom-cursor");
         const langSection = document.getElementById("languages");
         let i = 0;
 
         function typeWriter() {
             if (i < nameArray.length) {
-                element.innerHTML += nameArray[i];
+                textElement.innerHTML += nameArray[i];
                 i++;
                 setTimeout(typeWriter, 120); 
             } else {
-                element.classList.add("cursor-blink");
+                // Ativa o piscar apenas no final de tudo
+                cursor.classList.add("cursor-blink");
                 langSection.classList.add("visible");
             }
         }
