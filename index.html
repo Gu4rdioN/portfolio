@@ -70,17 +70,31 @@
             animation: blink 0.8s infinite;
         }
 
-        /* Informações da Faculdade */
-        .academic-info {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #555;
-            font-weight: 400;
-            letter-spacing: 1px;
+        /* Bloco da UNIP e Curso */
+        .academic-box {
+            margin-top: 20px;
             opacity: 0;
             transition: opacity 1s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .unip-logo {
+            height: 40px; /* Tamanho discreto para o logo da faculdade */
+            width: auto;
+            object-fit: contain;
+            align-self: flex-start;
+        }
+
+        .academic-info {
+            font-size: 0.85rem;
+            color: #555;
+            font-weight: 600;
+            letter-spacing: 1px;
             border-left: 2px solid #333;
             padding-left: 10px;
+            line-height: 1.4;
         }
 
         /* Linguagens (Centralizadas no Meio) */
@@ -140,9 +154,13 @@
             <span id="line1" class="line active-cursor"></span>
             <span id="line2" class="line"></span>
         </div>
-        <div id="academic-info" class="academic-info">
-            <p>CIÊNCIA DA COMPUTAÇÃO</p>
-            <p>UNIVERSIDADE PAULISTA CAMPUS LIMEIRA</p>
+
+        <div id="academic-box" class="academic-box">
+            <img src="unip-logo.png" alt="UNIP" class="unip-logo">
+            <div class="academic-info">
+                <p>CIÊNCIA DA COMPUTAÇÃO</p>
+                <p style="font-weight: 400; color: #888;">UNIVERSIDADE PAULISTA - CAMPUS LIMEIRA</p>
+            </div>
         </div>
     </div>
 
@@ -177,7 +195,7 @@
         
         const el1 = document.getElementById("line1");
         const el2 = document.getElementById("line2");
-        const academic = document.getElementById("academic-info");
+        const academicBox = document.getElementById("academic-box");
         const langSection = document.getElementById("languages");
 
         let i = 0;
@@ -202,8 +220,8 @@
                 setTimeout(typeLastName, 120);
             } else {
                 el2.classList.add("cursor-blink");
-                // Após o nome, revela o resto
-                academic.style.opacity = "1";
+                // Libera as infos e linguagens após terminar o nome
+                academicBox.style.opacity = "1";
                 langSection.classList.add("visible");
             }
         }
