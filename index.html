@@ -33,7 +33,7 @@
             left: 0;
             z-index: 10;
             display: flex;
-            gap: 50px; /* Espaço entre o nome e o texto explicativo */
+            gap: 60px; /* Aumentei levemente o espaço */
             align-items: flex-start;
         }
 
@@ -74,7 +74,7 @@
             animation: blink 0.8s infinite;
         }
 
-        /* Infos da UNIP (Logo menor e texto menor) */
+        /* Infos da UNIP */
         .academic-box {
             margin-top: 15px;
             opacity: 0;
@@ -85,14 +85,14 @@
         }
 
         .unip-logo {
-            height: 25px; /* Logo reduzido */
+            height: 25px; 
             width: auto;
             object-fit: contain;
             align-self: flex-start;
         }
 
         .academic-info {
-            font-size: 0.65rem; /* Caracteres menores */
+            font-size: 0.65rem; 
             color: #666;
             font-weight: 600;
             letter-spacing: 0.5px;
@@ -101,13 +101,14 @@
             line-height: 1.3;
         }
 
-        /* Mini texto ao lado */
+        /* Texto Bio (Aumentado conforme solicitado) */
         .bio-text {
             margin-top: 10px;
-            max-width: 300px;
-            font-size: 0.9rem;
-            color: #444;
-            line-height: 1.5;
+            max-width: 450px; /* Aumentado para comportar o texto maior */
+            font-size: 1.3rem; /* Fonte maior para melhor leitura */
+            color: #333;
+            font-weight: 500;
+            line-height: 1.4;
             opacity: 0;
             transition: opacity 1.5s ease;
             padding-top: 5px;
