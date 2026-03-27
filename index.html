@@ -18,16 +18,17 @@
             font-family: 'Inter', sans-serif;
             height: 100vh;
             display: flex;
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: center;     /* Centraliza verticalmente */
+            flex-direction: column;
             overflow: hidden;
         }
 
         .container {
+            /* Posicionamento Original: Topo Esquerda */
+            padding-top: 60px;
+            padding-left: 6%;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Garante que o conteúdo interno alinhe no centro */
-            text-align: center;
+            align-items: flex-start; /* Alinha tudo à esquerda */
         }
 
         .typing-container {
@@ -38,7 +39,7 @@
             text-transform: uppercase;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 40px;
         }
 
@@ -56,7 +57,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             min-height: 1.1em;
-            padding-right: 5px;
+            padding-right: 10px;
         }
 
         .active-cursor {
@@ -72,6 +73,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 1s ease-out;
+            text-align: left;
         }
 
         .languages-section.visible {
@@ -82,8 +84,8 @@
         .languages-grid {
             display: flex;
             gap: 30px;
-            justify-content: center;
-            align-items: flex-end; /* Alinha os logos pela base para ficarem simétricos */
+            justify-content: flex-start; /* Alinha os logos à esquerda */
+            align-items: flex-end;
             flex-wrap: wrap;
         }
 
@@ -92,13 +94,13 @@
             flex-direction: column;
             align-items: center;
             gap: 12px;
-            width: 80px; /* Largura fixa para manter o espaçamento igual */
+            width: 70px;
         }
 
         .lang-item img {
-            height: 50px;       /* Altura fixa para todos */
-            width: auto;        /* Largura automática para não distorcer */
-            max-width: 60px;    /* Limite de largura */
+            height: 45px;       /* Altura padronizada */
+            width: auto;
+            max-width: 55px;
             object-fit: contain;
             transition: transform 0.3s ease;
         }
@@ -108,7 +110,7 @@
         }
 
         .lang-item span {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             color: #555;
             text-transform: uppercase;
