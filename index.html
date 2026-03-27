@@ -18,14 +18,16 @@
             font-family: 'Inter', sans-serif;
             height: 100vh;
             display: flex;
-            overflow-x: hidden;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center;     /* Centraliza verticalmente */
+            overflow: hidden;
         }
 
         .container {
-            padding-top: 60px;
-            padding-left: 6%;
             display: flex;
             flex-direction: column;
+            align-items: center; /* Garante que o conteúdo interno alinhe no centro */
+            text-align: center;
         }
 
         .typing-container {
@@ -36,8 +38,8 @@
             text-transform: uppercase;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 30px;
+            align-items: center;
+            margin-bottom: 40px;
         }
 
         .line {
@@ -54,7 +56,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             min-height: 1.1em;
-            padding-right: 10px;
+            padding-right: 5px;
         }
 
         .active-cursor {
@@ -70,7 +72,6 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 1s ease-out;
-            margin-top: 20px;
         }
 
         .languages-section.visible {
@@ -80,8 +81,9 @@
 
         .languages-grid {
             display: flex;
-            gap: 25px;
-            align-items: center;
+            gap: 30px;
+            justify-content: center;
+            align-items: flex-end; /* Alinha os logos pela base para ficarem simétricos */
             flex-wrap: wrap;
         }
 
@@ -89,24 +91,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            width: 80px; /* Largura fixa para manter o espaçamento igual */
         }
 
         .lang-item img {
-            width: 45px;
-            height: 45px;
+            height: 50px;       /* Altura fixa para todos */
+            width: auto;        /* Largura automática para não distorcer */
+            max-width: 60px;    /* Limite de largura */
             object-fit: contain;
-            filter: grayscale(20%);
             transition: transform 0.3s ease;
         }
 
         .lang-item img:hover {
             transform: scale(1.1);
-            filter: grayscale(0%);
         }
 
         .lang-item span {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: #555;
             text-transform: uppercase;
@@ -143,10 +145,6 @@
                 <div class="lang-item">
                     <img src="javascript-logo.png" alt="JavaScript">
                     <span>JavaScript</span>
-                </div>
-                <div class="lang-item">
-                    <img src="kotlin-2.png" alt="Kotlin">
-                    <span>Kotlin</span>
                 </div>
                 <div class="lang-item">
                     <img src="python-logo.png" alt="Python">
@@ -186,7 +184,6 @@
                 setTimeout(typeLastName, 120);
             } else {
                 el2.classList.add("cursor-blink");
-                // Faz as linguagens aparecerem suavemente após o nome
                 langSection.classList.add("visible");
             }
         }
