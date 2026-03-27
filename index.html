@@ -24,16 +24,12 @@
             position: relative;
         }
 
-        /* Container Principal */
+        /* Container Principal alinhado à esquerda */
         .container {
             padding-top: 60px;
             padding-left: 6%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 10;
             display: flex;
-            gap: 60px; /* Aumentei levemente o espaço */
+            gap: 60px; 
             align-items: flex-start;
         }
 
@@ -76,7 +72,7 @@
 
         /* Infos da UNIP */
         .academic-box {
-            margin-top: 15px;
+            margin-top: 20px;
             opacity: 0;
             transition: opacity 1s ease;
             display: flex;
@@ -101,11 +97,11 @@
             line-height: 1.3;
         }
 
-        /* Texto Bio (Aumentado conforme solicitado) */
+        /* Texto Bio */
         .bio-text {
             margin-top: 10px;
-            max-width: 450px; /* Aumentado para comportar o texto maior */
-            font-size: 1.3rem; /* Fonte maior para melhor leitura */
+            max-width: 450px;
+            font-size: 1.3rem;
             color: #333;
             font-weight: 500;
             line-height: 1.4;
@@ -114,12 +110,10 @@
             padding-top: 5px;
         }
 
-        /* Linguagens (Centralizadas) */
+        /* Seção de Linguagens - AGORA ALINHADA À ESQUERDA */
         .languages-section {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin-top: 50px; /* Espaço abaixo do bloco superior */
+            padding-left: 6%; /* Mesma margem do nome */
             opacity: 0;
             transform: translateY(20px);
             transition: all 1s ease-out;
@@ -133,7 +127,7 @@
         .languages-grid {
             display: flex;
             gap: 40px;
-            justify-content: center;
+            justify-content: flex-start; /* Alinhado à esquerda */
             align-items: flex-end;
         }
 
