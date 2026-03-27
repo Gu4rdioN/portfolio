@@ -24,7 +24,7 @@
             position: relative;
         }
 
-        /* Container do Nome (Topo Esquerda) */
+        /* Container Principal */
         .container {
             padding-top: 60px;
             padding-left: 6%;
@@ -32,8 +32,12 @@
             top: 0;
             left: 0;
             z-index: 10;
+            display: flex;
+            gap: 50px; /* Espaço entre o nome e o texto explicativo */
+            align-items: flex-start;
         }
 
+        /* Nome */
         .typing-container {
             font-size: clamp(2rem, 8vw, 4rem);
             font-weight: 900;
@@ -70,34 +74,46 @@
             animation: blink 0.8s infinite;
         }
 
-        /* Bloco da UNIP e Curso */
+        /* Infos da UNIP (Logo menor e texto menor) */
         .academic-box {
-            margin-top: 20px;
+            margin-top: 15px;
             opacity: 0;
             transition: opacity 1s ease;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .unip-logo {
-            height: 40px; /* Tamanho discreto para o logo da faculdade */
+            height: 25px; /* Logo reduzido */
             width: auto;
             object-fit: contain;
             align-self: flex-start;
         }
 
         .academic-info {
-            font-size: 0.85rem;
-            color: #555;
+            font-size: 0.65rem; /* Caracteres menores */
+            color: #666;
             font-weight: 600;
-            letter-spacing: 1px;
-            border-left: 2px solid #333;
-            padding-left: 10px;
-            line-height: 1.4;
+            letter-spacing: 0.5px;
+            border-left: 1.5px solid #333;
+            padding-left: 8px;
+            line-height: 1.3;
         }
 
-        /* Linguagens (Centralizadas no Meio) */
+        /* Mini texto ao lado */
+        .bio-text {
+            margin-top: 10px;
+            max-width: 300px;
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.5;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            padding-top: 5px;
+        }
+
+        /* Linguagens (Centralizadas) */
         .languages-section {
             flex: 1;
             display: flex;
@@ -150,42 +166,33 @@
 <body>
 
     <div class="container">
-        <div class="typing-container">
-            <span id="line1" class="line active-cursor"></span>
-            <span id="line2" class="line"></span>
+        <div>
+            <div class="typing-container">
+                <span id="line1" class="line active-cursor"></span>
+                <span id="line2" class="line"></span>
+            </div>
+
+            <div id="academic-box" class="academic-box">
+                <img src="unip-logo.png" alt="UNIP" class="unip-logo">
+                <div class="academic-info">
+                    <p>CIÊNCIA DA COMPUTAÇÃO</p>
+                    <p style="font-weight: 400; color: #999;">UNIVERSIDADE PAULISTA - CAMPUS LIMEIRA</p>
+                </div>
+            </div>
         </div>
 
-        <div id="academic-box" class="academic-box">
-            <img src="unip-logo.png" alt="UNIP" class="unip-logo">
-            <div class="academic-info">
-                <p>CIÊNCIA DA COMPUTAÇÃO</p>
-                <p style="font-weight: 400; color: #888;">UNIVERSIDADE PAULISTA - CAMPUS LIMEIRA</p>
-            </div>
+        <div id="bio" class="bio-text">
+            Estudando programação na UNIP e focado sempre em aprender novas linguagens e tecnologias para criar soluções eficientes.
         </div>
     </div>
 
     <div id="languages" class="languages-section">
         <div class="languages-grid">
-            <div class="lang-item">
-                <img src="Kotlin-logo.png" alt="Kotlin">
-                <span>Kotlin</span>
-            </div>
-            <div class="lang-item">
-                <img src="css3-logo.png" alt="CSS3">
-                <span>CSS3</span>
-            </div>
-            <div class="lang-item">
-                <img src="html-logo.png" alt="HTML5">
-                <span>HTML5</span>
-            </div>
-            <div class="lang-item">
-                <img src="javascript-logo.png" alt="JavaScript">
-                <span>JavaScript</span>
-            </div>
-            <div class="lang-item">
-                <img src="python-logo.png" alt="Python">
-                <span>Python</span>
-            </div>
+            <div class="lang-item"><img src="Kotlin-logo.png" alt="Kotlin"><span>Kotlin</span></div>
+            <div class="lang-item"><img src="css3-logo.png" alt="CSS3"><span>CSS3</span></div>
+            <div class="lang-item"><img src="html-logo.png" alt="HTML5"><span>HTML5</span></div>
+            <div class="lang-item"><img src="javascript-logo.png" alt="JavaScript"><span>JavaScript</span></div>
+            <div class="lang-item"><img src="python-logo.png" alt="Python"><span>Python</span></div>
         </div>
     </div>
 
@@ -196,6 +203,7 @@
         const el1 = document.getElementById("line1");
         const el2 = document.getElementById("line2");
         const academicBox = document.getElementById("academic-box");
+        const bio = document.getElementById("bio");
         const langSection = document.getElementById("languages");
 
         let i = 0;
@@ -220,8 +228,8 @@
                 setTimeout(typeLastName, 120);
             } else {
                 el2.classList.add("cursor-blink");
-                // Libera as infos e linguagens após terminar o nome
                 academicBox.style.opacity = "1";
+                bio.style.opacity = "1";
                 langSection.classList.add("visible");
             }
         }
