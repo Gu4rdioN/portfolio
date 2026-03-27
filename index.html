@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gabriel Moura | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -24,26 +24,22 @@
             position: relative;
         }
 
-        /* Nome fixado no topo à esquerda - Sem quebras estranhas */
-        .header-container {
+        .container {
+            padding-top: 60px;
+            padding-left: 6%;
             position: absolute;
-            top: 60px;
-            left: 6%;
-            z-index: 10;
+            top: 0;
+            left: 0;
         }
 
-        .typing-container {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+        h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
             font-weight: 900;
-            line-height: 1;
-            letter-spacing: -3px;
+            line-height: 0.9;
+            letter-spacing: -4px;
             text-transform: uppercase;
-            display: block;
-        }
+            display: inline-block;
 
-        .line {
-            display: block; /* Garante a quebra de linha correta */
-            min-height: 1.2em;
             background: linear-gradient(
                 180deg, 
                 #000000 0%, 
@@ -55,41 +51,31 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-
-        /* Cursor ajustado para não empurrar o texto */
-        .active-cursor {
-            border-right: 6px solid #333;
-            margin-left: 5px;
-            display: inline-block;
-            vertical-align: bottom;
-            height: 0.9em;
+            
+            border-right: 8px solid #333;
         }
 
         .cursor-blink {
             animation: blink 0.8s infinite;
         }
 
-        /* Seção de Linguagens - Centralizada no meio exato */
+        /* LINGUAGENS NO MEIO DO SITE */
         .languages-section {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease, transform 1s ease;
+            transition: opacity 1s ease;
         }
 
         .languages-section.visible {
             opacity: 1;
-            transform: translateY(0);
         }
 
         .languages-grid {
             display: flex;
             gap: 40px;
-            justify-content: center;
             align-items: flex-end;
         }
 
@@ -97,28 +83,20 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            width: 80px;
+            gap: 10px;
         }
 
         .lang-item img {
-            height: 55px;
+            height: 50px;
             width: auto;
-            max-width: 65px;
             object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .lang-item img:hover {
-            transform: scale(1.15);
         }
 
         .lang-item span {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             color: #555;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         @keyframes blink {
@@ -128,15 +106,8 @@
 </head>
 <body>
 
-    <div class="header-container">
-        <div class="typing-container">
-            <div>
-                <span id="line1" class="line"></span><span id="cursor1" class="active-cursor"></span>
-            </div>
-            <div>
-                <span id="line2" class="line"></span><span id="cursor2"></span>
-            </div>
-        </div>
+    <div class="container">
+        <h1 id="typing-text"></h1>
     </div>
 
     <div id="languages" class="languages-section">
@@ -165,45 +136,24 @@
     </div>
 
     <script>
-        const firstName = "GABRIEL";
-        const lastName = "MOURA";
-        
-        const el1 = document.getElementById("line1");
-        const el2 = document.getElementById("line2");
-        const cursor1 = document.getElementById("cursor1");
-        const cursor2 = document.getElementById("cursor2");
+        const nameArray = ["G", "A", "B", "R", "I", "E", "L", "<br>", "M", "O", "U", "R", "A"];
+        const element = document.getElementById("typing-text");
         const langSection = document.getElementById("languages");
-
         let i = 0;
-        let j = 0;
 
-        function typeFirstName() {
-            if (i < firstName.length) {
-                el1.innerHTML += firstName.charAt(i);
+        function typeWriter() {
+            if (i < nameArray.length) {
+                element.innerHTML += nameArray[i];
                 i++;
-                setTimeout(typeFirstName, 100);
+                setTimeout(typeWriter, 120); 
             } else {
-                // Remove cursor da linha 1 e passa para a 2
-                cursor1.style.display = "none";
-                cursor2.className = "active-cursor";
-                setTimeout(typeLastName, 200);
-            }
-        }
-
-        function typeLastName() {
-            if (j < lastName.length) {
-                el2.innerHTML += lastName.charAt(j);
-                j++;
-                setTimeout(typeLastName, 120);
-            } else {
-                // Finaliza com o cursor piscando apenas no final de MOURA
-                cursor2.classList.add("cursor-blink");
+                element.classList.add("cursor-blink");
                 langSection.classList.add("visible");
             }
         }
 
         window.onload = () => {
-            setTimeout(typeFirstName, 500);
+            setTimeout(typeWriter, 500);
         };
     </script>
 </body>
