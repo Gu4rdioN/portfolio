@@ -20,15 +20,16 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            position: relative;
         }
 
-        .container {
-            /* Posicionamento Original: Topo Esquerda */
+        /* Nome fixado no topo à esquerda */
+        .header-container {
             padding-top: 60px;
             padding-left: 6%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* Alinha tudo à esquerda */
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         .typing-container {
@@ -39,8 +40,6 @@
             text-transform: uppercase;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 40px;
         }
 
         .line {
@@ -68,12 +67,15 @@
             animation: blink 0.8s infinite;
         }
 
-        /* Seção de Linguagens */
+        /* Seção de Linguagens Centralizada no Meio da Página */
         .languages-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             opacity: 0;
             transform: translateY(20px);
             transition: all 1s ease-out;
-            text-align: left;
         }
 
         .languages-section.visible {
@@ -83,8 +85,8 @@
 
         .languages-grid {
             display: flex;
-            gap: 30px;
-            justify-content: flex-start; /* Alinha os logos à esquerda */
+            gap: 40px;
+            justify-content: center;
             align-items: flex-end;
             flex-wrap: wrap;
         }
@@ -94,23 +96,23 @@
             flex-direction: column;
             align-items: center;
             gap: 12px;
-            width: 70px;
+            width: 80px;
         }
 
         .lang-item img {
-            height: 45px;       /* Altura padronizada */
+            height: 55px; /* Tamanho levemente maior para destaque no centro */
             width: auto;
-            max-width: 55px;
+            max-width: 65px;
             object-fit: contain;
             transition: transform 0.3s ease;
         }
 
         .lang-item img:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         .lang-item span {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: #555;
             text-transform: uppercase;
@@ -124,34 +126,34 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="header-container">
         <div class="typing-container">
             <span id="line1" class="line active-cursor"></span>
             <span id="line2" class="line"></span>
         </div>
+    </div>
 
-        <div id="languages" class="languages-section">
-            <div class="languages-grid">
-                <div class="lang-item">
-                    <img src="Kotlin-logo.png" alt="Kotlin">
-                    <span>Kotlin</span>
-                </div>
-                <div class="lang-item">
-                    <img src="css3-logo.png" alt="CSS3">
-                    <span>CSS3</span>
-                </div>
-                <div class="lang-item">
-                    <img src="html-logo.png" alt="HTML5">
-                    <span>HTML5</span>
-                </div>
-                <div class="lang-item">
-                    <img src="javascript-logo.png" alt="JavaScript">
-                    <span>JavaScript</span>
-                </div>
-                <div class="lang-item">
-                    <img src="python-logo.png" alt="Python">
-                    <span>Python</span>
-                </div>
+    <div id="languages" class="languages-section">
+        <div class="languages-grid">
+            <div class="lang-item">
+                <img src="Kotlin-logo.png" alt="Kotlin">
+                <span>Kotlin</span>
+            </div>
+            <div class="lang-item">
+                <img src="css3-logo.png" alt="CSS3">
+                <span>CSS3</span>
+            </div>
+            <div class="lang-item">
+                <img src="html-logo.png" alt="HTML5">
+                <span>HTML5</span>
+            </div>
+            <div class="lang-item">
+                <img src="javascript-logo.png" alt="JavaScript">
+                <span>JavaScript</span>
+            </div>
+            <div class="lang-item">
+                <img src="python-logo.png" alt="Python">
+                <span>Python</span>
             </div>
         </div>
     </div>
@@ -186,6 +188,7 @@
                 setTimeout(typeLastName, 120);
             } else {
                 el2.classList.add("cursor-blink");
+                // Ativa a exibição das linguagens centralizadas
                 langSection.classList.add("visible");
             }
         }
