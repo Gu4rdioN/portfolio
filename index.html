@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gabriel Moura | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -18,23 +18,26 @@
             font-family: 'Inter', sans-serif;
             height: 100vh;
             display: flex;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         .container {
             padding-top: 60px;
             padding-left: 6%;
+            display: flex;
+            flex-direction: column;
         }
 
         .typing-container {
-            font-size: clamp(2rem, 8vw, 4rem);
-            font-weight: 700;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
             line-height: 0.9;
             letter-spacing: -4px;
             text-transform: uppercase;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            margin-bottom: 30px;
         }
 
         .line {
@@ -54,14 +57,60 @@
             padding-right: 10px;
         }
 
-
         .active-cursor {
             border-right: 8px solid #333;
         }
 
-
         .cursor-blink {
             animation: blink 0.8s infinite;
+        }
+
+        /* Seção de Linguagens */
+        .languages-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+            margin-top: 20px;
+        }
+
+        .languages-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .languages-grid {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .lang-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-item img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            filter: grayscale(20%);
+            transition: transform 0.3s ease;
+        }
+
+        .lang-item img:hover {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .lang-item span {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         @keyframes blink {
@@ -76,6 +125,35 @@
             <span id="line1" class="line active-cursor"></span>
             <span id="line2" class="line"></span>
         </div>
+
+        <div id="languages" class="languages-section">
+            <div class="languages-grid">
+                <div class="lang-item">
+                    <img src="Kotlin-logo.png" alt="Kotlin">
+                    <span>Kotlin</span>
+                </div>
+                <div class="lang-item">
+                    <img src="css3-logo.png" alt="CSS3">
+                    <span>CSS3</span>
+                </div>
+                <div class="lang-item">
+                    <img src="html-logo.png" alt="HTML5">
+                    <span>HTML5</span>
+                </div>
+                <div class="lang-item">
+                    <img src="javascript-logo.png" alt="JavaScript">
+                    <span>JavaScript</span>
+                </div>
+                <div class="lang-item">
+                    <img src="kotlin-2.png" alt="Kotlin">
+                    <span>Kotlin</span>
+                </div>
+                <div class="lang-item">
+                    <img src="python-logo.png" alt="Python">
+                    <span>Python</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -84,6 +162,7 @@
         
         const el1 = document.getElementById("line1");
         const el2 = document.getElementById("line2");
+        const langSection = document.getElementById("languages");
 
         let i = 0;
         let j = 0;
@@ -94,7 +173,6 @@
                 i++;
                 setTimeout(typeFirstName, 100);
             } else {
-
                 el1.classList.remove("active-cursor");
                 el2.classList.add("active-cursor");
                 setTimeout(typeLastName, 200);
@@ -107,8 +185,9 @@
                 j++;
                 setTimeout(typeLastName, 120);
             } else {
-
                 el2.classList.add("cursor-blink");
+                // Faz as linguagens aparecerem suavemente após o nome
+                langSection.classList.add("visible");
             }
         }
 
